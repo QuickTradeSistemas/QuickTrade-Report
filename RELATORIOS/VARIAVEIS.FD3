@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<variables>
+  <item Name=" NORTSYS"/>
+  <item Name="RELATORIO" Value="'NOME'"/>
+  <item Name="RELATORIOID" Value="'CÓDIGO'"/>
+  <item Name="RELATORIOTIPO" Value="'TIPO DE NEGÓCIO'"/>
+  <item Name="RELATORIOGRUPO" Value="'GRUPO'"/>
+  <item Name="RELATORIOVERSAO" Value="'2.0'"/>
+  <item Name="RELATORIODESCRICAO" Value="'DESCRIÇÃO DO RELATÓRIO'"/>
+  <item Name="SISTEMA" Value="'QuickTrade 17.00'"/>
+  <item Name="LOGIN" Value="'0'"/>
+  <item Name="ID" Value="''"/>
+</variables>

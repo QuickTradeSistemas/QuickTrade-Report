@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Tag="1" Version="6.4.9" DotMatrixReport="False" EngineOptions.SilentMode="True" EngineOptions.NewSilentMode="simSilent" IniFile="\Software\Fast Reports" PreviewOptions.AllowEdit="False" PreviewOptions.Buttons="11321" PreviewOptions.Zoom="1" PrintOptions.Printer="Padrão" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43036,421441331" ReportOptions.Description.Text="" ReportOptions.LastChange="43098,0141824769" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;begin&#13;&#10;&#13;&#10;end." ShowProgress="False" StoreInDFM="False" OnReportPrint="frxReportOnReportPrint">
+  <Datasets>
+    <item DataSet="FrTbEmpresa" DataSetName="TbEmpresa"/>
+    <item DataSet="TbPlanos" DataSetName="TbPlanos"/>
+    <item DataSet="TbLogin" DataSetName="TbLogin"/>
+  </Datasets>
+  <Variables>
+    <item Name=" NORTSYS"/>
+    <item Name="RELATORIO" Value="'Contratos'"/>
+    <item Name="RELATORIOID" Value="'419'"/>
+    <item Name="RELATORIOTIPO" Value="'&#60;FINANCEIRO&#62;'"/>
+    <item Name="RELATORIOGRUPO" Value="'CADASTROS'"/>
+    <item Name="RELATORIOVERSAO" Value="'2.0'"/>
+    <item Name="RELATORIODESCRICAO" Value="'informa os valores de cadas contrato'"/>
+    <item Name="SISTEMA" Value="'QuickTrade 17.00'"/>
+    <item Name="LOGIN" Value="'0'"/>
+    <item Name="ID" Value="''"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000">
+    <TfrxFDQuery Name="TbPlanos" UserName="TbPlanos" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="SELECT CT.IDCONTRATO,CT.NOME,CT.VALOR,CT.MULTA,CT.CARENCIA,CT.ATRASO,&#13;&#10;(SELECT COUNT(DISTINCT(IDCLIENTE)) FROM CTBCLIENTES WHERE IDCONTRATO = CT.IDCONTRATO AND STATUS='A') AS QTDATIVOS,&#13;&#10;(SELECT COUNT(DISTINCT(IDCLIENTE)) FROM CTBCLIENTES WHERE IDCONTRATO = CT.IDCONTRATO AND STATUS='B') AS QTDBLOQUEADOS,&#13;&#10;(SELECT COUNT(DISTINCT(IDCLIENTE)) FROM CTBCLIENTES WHERE IDCONTRATO = CT.IDCONTRATO AND STATUS='I') AS QTDINATIVOS,&#13;&#10;(SELECT COUNT(DISTINCT(IDCLIENTE)) FROM CTBCLIENTES WHERE IDCONTRATO = CT.IDCONTRATO) AS QTDTOTAL&#13;&#10;FROM CTBCONTRATOS CT&#13;&#10;GROUP BY CT.IDCONTRATO,CT.NOME,CT.VALOR,CT.MULTA,CT.CARENCIA,CT.ATRASO&#13;&#10;ORDER BY CT.NOME  " MacroCreate="True" MacroExpand="True" ReadOnly="False" Left="0" Top="0"/>
+    <TfrxFDQuery Name="TbLogin" UserName="TbLogin" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="SELECT * FROM SYSLOGIN WHERE (IDLOGIN = :ID)                                                                   " MacroCreate="True" MacroExpand="True" ReadOnly="False" Left="0" Top="0">
+      <Parameters>
+        <item Name="ID" DataType="ftInteger" Expression="LOGIN"/>
+      </Parameters>
+    </TfrxFDQuery>
+  </TfrxDataPage>
+  <TfrxReportPage Name="Resumido" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="tahoma" Font.Style="0" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="56,69295" Left="0" Top="18,89765" Width="755,906">
+      <TfrxPictureView Name="Picture1" AllowVectorExport="True" Left="0" Top="0" Width="151,18110236" Height="56,69295" Center="True" DataField="EMPRESALOGO" DataSet="FrTbEmpresa" DataSetName="TbEmpresa" Frame.Typ="7" Frame.Width="0,1" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+      <TfrxMemoView Name="Memo28" AllowVectorExport="True" Left="151,1812" Top="0" Width="287,24428" Height="56,69295" DataSet="FrTbEmpresa" DataSetName="TbEmpresa" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" Frame.Typ="6" Frame.Width="0,5" HAlign="haCenter" LineSpacing="1" ParentFont="False" VAlign="vaCenter" Text="[TbEmpresa.&#34;EMPRESARAZAOSOCIAL&#34;]&#13;&#10;[TbEmpresa.&#34;EMPRESAEMAIL&#34;]&#13;&#10;[MASKSYS('FONE',&#60;TbEmpresa.&#34;EMPRESAFONEFAX&#34;&#62;)]">
+        <Formats>
+          <item/>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+      <TfrxMemoView Name="Memo29" AllowVectorExport="True" Left="438,56864636" Top="0" Width="317,48031496063" Height="56,31496063" Font.Charset="0" Font.Color="-16777208" Font.Height="-13" Font.Name="Tahoma" Font.Style="1" Frame.Typ="6" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[UPPERCASE(&#60;RELATORIO&#62;)]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="18,89765" Left="0" Top="204,09462" Width="755,906" ColumnWidth="0" ColumnGap="0" DataSet="TbPlanos" DataSetName="TbPlanos" RowCount="0">
+      <TfrxMemoView Name="Memo2" AllowVectorExport="True" Left="0" Top="0" Width="26,45671" Height="18,89765" DataField="IDCONTRATO" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="9" Frame.Width="0,5" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[TbPlanos.&#34;IDCONTRATO&#34;]"/>
+      <TfrxMemoView Name="Memo3" AllowVectorExport="True" Left="26,45671" Top="0" Width="185,19697" Height="18,89765" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="10" Frame.Width="0,5" ParentFont="False" VAlign="vaCenter" Text="- [TbPlanos.&#34;NOME&#34;]"/>
+      <TfrxMemoView Name="Memo4" AllowVectorExport="True" Left="381,73253" Top="0" Width="56,69295" Height="18,89765" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="10" Frame.Width="0,5" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[MASKSYS('R$',&#60;TbPlanos.&#34;VALOR&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo5" AllowVectorExport="True" Left="211,65368" Top="0" Width="56,69295" Height="18,89765" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="8" Frame.Width="0,5" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[MASKSYS('R$',&#60;TbPlanos.&#34;MULTA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo6" AllowVectorExport="True" Left="268,34663" Top="0" Width="56,69295" Height="18,89765" DataField="ATRASO" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[TbPlanos.&#34;ATRASO&#34;]"/>
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="325,03958" Top="0" Width="56,69295" Height="18,89765" DataField="CARENCIA" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[TbPlanos.&#34;CARENCIA&#34;]"/>
+      <TfrxMemoView Name="Memo13" AllowVectorExport="True" Left="438,42548" Top="0" Width="79,37013" Height="18,89765" DataField="QTDATIVOS" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[TbPlanos.&#34;QTDATIVOS&#34;]"/>
+      <TfrxMemoView Name="Memo14" AllowVectorExport="True" Left="517,79561" Top="0" Width="79,37013" Height="18,89765" DataField="QTDBLOQUEADOS" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[TbPlanos.&#34;QTDBLOQUEADOS&#34;]"/>
+      <TfrxMemoView Name="Memo15" AllowVectorExport="True" Left="597,16574" Top="0" Width="79,37013" Height="18,89765" DataField="QTDINATIVOS" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[TbPlanos.&#34;QTDINATIVOS&#34;]"/>
+      <TfrxMemoView Name="Memo16" AllowVectorExport="True" Left="676,53587" Top="0" Width="79,37013" Height="18,89765" DataField="QTDTOTAL" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="10" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[TbPlanos.&#34;QTDTOTAL&#34;]"/>
+    </TfrxMasterData>
+    <TfrxGroupHeader Name="GroupHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Height="45,35436" Left="0" ParentFont="False" Top="136,06308" Width="755,906" Condition="TbEmpresa.&#34;IDCONFIG&#34;">
+      <TfrxMemoView Name="Memo8" AllowVectorExport="True" Left="438,42548" Top="0" Width="317,48052" Height="26,45671" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="6" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Clientes"/>
+      <TfrxMemoView Name="Memo9" AllowVectorExport="True" Left="438,42548" Top="26,45671" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Ativos"/>
+      <TfrxMemoView Name="Memo10" AllowVectorExport="True" Left="517,79561" Top="26,45671" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Bloqueados"/>
+      <TfrxMemoView Name="Memo11" AllowVectorExport="True" Left="597,16574" Top="26,45671" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Inativos"/>
+      <TfrxMemoView Name="Memo12" AllowVectorExport="True" Left="676,53587" Top="26,45671" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="10" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Total"/>
+      <TfrxMemoView Name="Memo17" AllowVectorExport="True" Left="0" Top="0" Width="211,65368" Height="45,35436" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="15" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Planos"/>
+      <TfrxMemoView Name="Memo18" AllowVectorExport="True" Left="381,73253" Top="0" Width="56,69295" Height="45,35436" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="14" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Valor"/>
+      <TfrxMemoView Name="Memo19" AllowVectorExport="True" Left="211,65368" Top="0" Width="56,69295" Height="45,35436" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="12" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Multa"/>
+      <TfrxMemoView Name="Memo20" AllowVectorExport="True" Left="268,34663" Top="0" Width="56,69295" Height="45,35436" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="12" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Atraso"/>
+      <TfrxMemoView Name="Memo21" AllowVectorExport="True" Left="325,03958" Top="0" Width="56,69295" Height="45,35436" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="12" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Carência"/>
+    </TfrxGroupHeader>
+    <TfrxGroupFooter Name="GroupFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="26,45671" Left="0" Top="245,66945" Width="755,906">
+      <TfrxMemoView Name="Memo22" AllowVectorExport="True" Left="438,42548" Top="0" Width="79,37013" Height="26,45671" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[SUM(&#60;TbPlanos.&#34;QTDATIVOS&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo23" AllowVectorExport="True" Left="517,79561" Top="0" Width="79,37013" Height="26,45671" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[SUM(&#60;TbPlanos.&#34;QTDBLOQUEADOS&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo24" AllowVectorExport="True" Left="597,16574" Top="0" Width="79,37013" Height="26,45671" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="8" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[SUM(&#60;TbPlanos.&#34;QTDINATIVOS&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo25" AllowVectorExport="True" Left="676,53587" Top="0" Width="79,37013" Height="26,45671" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="10" Frame.Width="0,5" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[SUM(&#60;TbPlanos.&#34;QTDTOTAL&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo26" AllowVectorExport="True" Left="0" Top="0" Width="381,73253" Height="26,45671" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="9" Frame.Width="0,5" GapX="5" ParentFont="False" VAlign="vaCenter" Text="[COUNT(MasterData1)]  Item(s)"/>
+      <TfrxMemoView Name="Memo27" AllowVectorExport="True" Left="381,73253" Top="0" Width="56,69295" Height="26,45671" DataSet="TbPlanos" DataSetName="TbPlanos" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="1" Frame.Typ="10" Frame.Width="0,5" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[MASKSYS('R$',SUM(&#60;TbPlanos.&#34;VALOR&#34;&#62;,MasterData1))]"/>
+    </TfrxGroupFooter>
+    <TfrxPageFooter Name="PageFooterD" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="15,11812" Left="0" Top="332,59864" Width="755,906">
+      <TfrxSysMemoView Name="SysMemo1" Align="baClient" AllowVectorExport="True" Left="0" Top="0" Width="755,906" Height="15,11812" AutoWidth="True" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" Frame.Typ="4" Frame.Width="0,1" HAlign="haRight" ParentFont="False" Text="Página [PAGE#] de [TOTALPAGES#]"/>
+      <TfrxMemoView Name="Memo1" Align="baLeft" AllowVectorExport="True" Left="0" Top="0" Width="532,91373" Height="15,11812" AutoWidth="True" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SISTEMA] | [Date  #ddd/mm/yyyy ][Time  #dhh:mm] | [TbLogin.&#34;USUARIO&#34;]">
+        <Formats>
+          <item/>
+          <item/>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+    </TfrxPageFooter>
+  </TfrxReportPage>
+</TfrxReport>
